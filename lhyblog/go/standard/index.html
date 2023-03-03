@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Go语言常用标准库 | 失效的氟西丁</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/lhyblog/image/favicon.ico">
+    <link rel="stylesheet" href="/lhyblog/css/style.css">
+    <meta name="description" content="日拱一卒无有尽，功不唐捐终入海">
+    
+    <link rel="preload" href="/lhyblog/assets/css/0.styles.68704805.css" as="style"><link rel="preload" href="/lhyblog/assets/js/app.5d93db53.js" as="script"><link rel="preload" href="/lhyblog/assets/js/2.8d81c5f1.js" as="script"><link rel="preload" href="/lhyblog/assets/js/18.fe60a8a6.js" as="script"><link rel="preload" href="/lhyblog/assets/js/3.4aea83a5.js" as="script"><link rel="prefetch" href="/lhyblog/assets/js/10.5a62e4bb.js"><link rel="prefetch" href="/lhyblog/assets/js/11.d21d05c8.js"><link rel="prefetch" href="/lhyblog/assets/js/12.9892c7c3.js"><link rel="prefetch" href="/lhyblog/assets/js/13.3f7be324.js"><link rel="prefetch" href="/lhyblog/assets/js/14.bf80a139.js"><link rel="prefetch" href="/lhyblog/assets/js/15.9af29553.js"><link rel="prefetch" href="/lhyblog/assets/js/16.957e5c08.js"><link rel="prefetch" href="/lhyblog/assets/js/17.d9ea814b.js"><link rel="prefetch" href="/lhyblog/assets/js/19.e8b06bfe.js"><link rel="prefetch" href="/lhyblog/assets/js/20.87eff516.js"><link rel="prefetch" href="/lhyblog/assets/js/21.8658752e.js"><link rel="prefetch" href="/lhyblog/assets/js/22.30a3bde4.js"><link rel="prefetch" href="/lhyblog/assets/js/23.347d7883.js"><link rel="prefetch" href="/lhyblog/assets/js/24.f6b7f30e.js"><link rel="prefetch" href="/lhyblog/assets/js/25.697e1d58.js"><link rel="prefetch" href="/lhyblog/assets/js/26.e99e4e5b.js"><link rel="prefetch" href="/lhyblog/assets/js/27.ecc78804.js"><link rel="prefetch" href="/lhyblog/assets/js/28.c084aee1.js"><link rel="prefetch" href="/lhyblog/assets/js/29.18f2e46b.js"><link rel="prefetch" href="/lhyblog/assets/js/30.a8b1171b.js"><link rel="prefetch" href="/lhyblog/assets/js/31.36b6b75b.js"><link rel="prefetch" href="/lhyblog/assets/js/32.ba9a9510.js"><link rel="prefetch" href="/lhyblog/assets/js/33.e25e1bf9.js"><link rel="prefetch" href="/lhyblog/assets/js/34.f90e5e6f.js"><link rel="prefetch" href="/lhyblog/assets/js/35.5229d417.js"><link rel="prefetch" href="/lhyblog/assets/js/36.e98c59e6.js"><link rel="prefetch" href="/lhyblog/assets/js/37.d6baccb3.js"><link rel="prefetch" href="/lhyblog/assets/js/38.d8129f3a.js"><link rel="prefetch" href="/lhyblog/assets/js/39.7c1e8322.js"><link rel="prefetch" href="/lhyblog/assets/js/4.6d213030.js"><link rel="prefetch" href="/lhyblog/assets/js/5.806ca713.js"><link rel="prefetch" href="/lhyblog/assets/js/6.753e5d29.js"><link rel="prefetch" href="/lhyblog/assets/js/7.4ec49768.js"><link rel="prefetch" href="/lhyblog/assets/js/8.f32da868.js"><link rel="prefetch" href="/lhyblog/assets/js/9.3f41e8d6.js">
+    <link rel="stylesheet" href="/lhyblog/assets/css/0.styles.68704805.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/lhyblog/" class="home-link router-link-active"><!----> <span class="site-name">失效的氟西丁</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="php" class="dropdown-title"><span class="title">php</span> <span class="arrow down"></span></button> <button type="button" aria-label="php" class="mobile-dropdown-title"><span class="title">php</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/php/base/" class="nav-link">
+  通用篇
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/php/laravel/" class="nav-link">
+  Laravel
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/php/skill/" class="nav-link">
+  技巧篇
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/nginx/" class="nav-link">
+  nginx
+</a></div><div class="nav-item"><a href="/lhyblog/print/" class="nav-link">
+  print
+</a></div><div class="nav-item"><a href="/lhyblog/mysql/" class="nav-link">
+  mysql
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web" class="dropdown-title"><span class="title">web</span> <span class="arrow down"></span></button> <button type="button" aria-label="web" class="mobile-dropdown-title"><span class="title">web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/web/layout/" class="nav-link">
+  css布局
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/web/case/" class="nav-link">
+  css实例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/js/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/js/decode/" class="nav-link">
+  js令牌解码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow down"></span></button> <button type="button" aria-label="python" class="mobile-dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/python/base/" class="nav-link">
+  python基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/python/machine/" class="nav-link">
+  机器学习
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Golang" class="dropdown-title"><span class="title">Golang</span> <span class="arrow down"></span></button> <button type="button" aria-label="Golang" class="mobile-dropdown-title"><span class="title">Golang</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/go/env/" class="nav-link">
+  前言和环境
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/grammar/" class="nav-link">
+  语法基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/base/" class="nav-link">
+  函数和数组(切片)
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/map/" class="nav-link">
+  Map,指针,值传递,引用传递
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/struct/" class="nav-link">
+  结构体
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/gin/" class="nav-link">
+  Gin
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/concurrent/" class="nav-link">
+  go并发
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/standard/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  常用标准库
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/skills/" class="nav-link">
+  技巧篇
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/docker/" class="nav-link">
+  docker
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/vue/base/" class="nav-link">
+  vue基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/instruction/" class="nav-link">
+  vue指令
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/assembly/" class="nav-link">
+  组件化编程
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/problem/" class="nav-link">
+  problem
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/uniApp/" class="nav-link">
+  uniApp
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/utils/" class="nav-link">
+  问题笔记
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/regular/" class="nav-link">
+  正则
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/tool/" class="nav-link">
+  tool
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="php" class="dropdown-title"><span class="title">php</span> <span class="arrow down"></span></button> <button type="button" aria-label="php" class="mobile-dropdown-title"><span class="title">php</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/php/base/" class="nav-link">
+  通用篇
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/php/laravel/" class="nav-link">
+  Laravel
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/php/skill/" class="nav-link">
+  技巧篇
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/nginx/" class="nav-link">
+  nginx
+</a></div><div class="nav-item"><a href="/lhyblog/print/" class="nav-link">
+  print
+</a></div><div class="nav-item"><a href="/lhyblog/mysql/" class="nav-link">
+  mysql
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web" class="dropdown-title"><span class="title">web</span> <span class="arrow down"></span></button> <button type="button" aria-label="web" class="mobile-dropdown-title"><span class="title">web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/web/layout/" class="nav-link">
+  css布局
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/web/case/" class="nav-link">
+  css实例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/js/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/js/decode/" class="nav-link">
+  js令牌解码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow down"></span></button> <button type="button" aria-label="python" class="mobile-dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/python/base/" class="nav-link">
+  python基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/python/machine/" class="nav-link">
+  机器学习
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Golang" class="dropdown-title"><span class="title">Golang</span> <span class="arrow down"></span></button> <button type="button" aria-label="Golang" class="mobile-dropdown-title"><span class="title">Golang</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/go/env/" class="nav-link">
+  前言和环境
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/grammar/" class="nav-link">
+  语法基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/base/" class="nav-link">
+  函数和数组(切片)
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/map/" class="nav-link">
+  Map,指针,值传递,引用传递
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/struct/" class="nav-link">
+  结构体
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/gin/" class="nav-link">
+  Gin
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/concurrent/" class="nav-link">
+  go并发
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/standard/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  常用标准库
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/skills/" class="nav-link">
+  技巧篇
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/docker/" class="nav-link">
+  docker
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/vue/base/" class="nav-link">
+  vue基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/instruction/" class="nav-link">
+  vue指令
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/assembly/" class="nav-link">
+  组件化编程
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/problem/" class="nav-link">
+  problem
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/uniApp/" class="nav-link">
+  uniApp
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/utils/" class="nav-link">
+  问题笔记
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/regular/" class="nav-link">
+  正则
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/tool/" class="nav-link">
+  tool
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span></span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/lhyblog/go/standard/" aria-current="page" class="active sidebar-link">Go语言常用标准库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lhyblog/go/standard/#_1-标准库之fmt与格式化占位符" class="sidebar-link">1. 标准库之fmt与格式化占位符</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lhyblog/go/standard/#_1-1-fmt-print和fmt-printin" class="sidebar-link">1.1 fmt.Print和fmt.PrintIn</a></li><li class="sidebar-sub-header"><a href="/lhyblog/go/standard/#_1-2-fmt-printf" class="sidebar-link">1.2 fmt.Printf</a></li></ul></li><li class="sidebar-sub-header"><a href="/lhyblog/go/standard/#_2-标准库之reflect" class="sidebar-link">2. 标准库之reflect</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lhyblog/go/standard/#_2-1-typeof获取具体类型" class="sidebar-link">2.1 TypeOf获取具体类型</a></li><li class="sidebar-sub-header"><a href="/lhyblog/go/standard/#_2-2-valueof获取具体类型的值" class="sidebar-link">2.2 ValueOf获取具体类型的值</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="go语言常用标准库"><a href="#go语言常用标准库" class="header-anchor">#</a> Go语言常用标准库</h1> <h2 id="_1-标准库之fmt与格式化占位符"><a href="#_1-标准库之fmt与格式化占位符" class="header-anchor">#</a> 1. 标准库之fmt与格式化占位符</h2> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>标准库fmt提供了以下几种输出相关函数。</p></div> <h3 id="_1-1-fmt-print和fmt-printin"><a href="#_1-1-fmt-print和fmt-printin" class="header-anchor">#</a> 1.1 fmt.Print和fmt.PrintIn</h3> <div class="custom-block tip"><p class="custom-block-title">都是打印输出</p> <ol><li>Println 打印的每一项之间都会有空行，Print没有</li> <li>Println 会自动换行，Print 不会</li></ol></div> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;我&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;要&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;好&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;好&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;学习&quot;</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;我&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;要&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;好&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;好&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;学习&quot;</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&quot;我&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;要&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;好&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;好&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;学习&quot;</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&quot;我&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;要&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;好&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;好&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;学习&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>输出结果</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>PS F:\go&gt; go run .\main.go
+我 要 好 好 学习
+我 要 好 好 学习        
+我要好好学习我要好好学习
+PS F:\go&gt; 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_1-2-fmt-printf"><a href="#_1-2-fmt-printf" class="header-anchor">#</a> 1.2 fmt.Printf</h3> <div class="custom-block tip"><p class="custom-block-title">格式化输出, 其常用占位符</p> <ol><li><code>%s</code> 字符串或切片的无解译字节</li> <li><code>%d</code> 整数的十进制表示</li> <li><code>%g</code> 浮点数, 例如123.456</li> <li><code>%t</code> 布尔型</li></ol></div> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;a=%s, b=%d, c=%g&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;开心&quot;</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">12.222</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>输出结果:</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>PS F:\go&gt; go run .\main.go
+a=开心, b=20, c=12.222
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="_2-标准库之reflect"><a href="#_2-标准库之reflect" class="header-anchor">#</a> 2. 标准库之reflect</h2> <div class="custom-block tip"><p class="custom-block-title">提示</p> <ol><li>反射指的是一个程序可以在运行时检查变量以及它的值并查找他们的类型</li> <li>在Go语言的反射机制中，任何接口值都由是<code>一个具体类型</code>和<code>具体类型的值</code>两部分组成的</li></ol></div> <h3 id="_2-1-typeof获取具体类型"><a href="#_2-1-typeof获取具体类型" class="header-anchor">#</a> 2.1 TypeOf获取具体类型</h3> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">import</span> <span class="token punctuation">(</span><span class="token string">&quot;reflect&quot;</span><span class="token punctuation">)</span>
+reflect.TypeOf<span class="token punctuation">(</span>变量名称<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;reflect&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	array <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 对象的类型: [5]int </span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="_2-2-valueof获取具体类型的值"><a href="#_2-2-valueof获取具体类型的值" class="header-anchor">#</a> 2.2 ValueOf获取具体类型的值</h3> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">import</span> <span class="token punctuation">(</span><span class="token string">&quot;reflect&quot;</span><span class="token punctuation">)</span>
+reflect.ValueOf<span class="token punctuation">(</span>变量名称<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;reflect&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	array <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 对象的值: [1 2 3 4 5]</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">6/9/2022, 10:06:28 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----><!----></div></div>
+    <script src="/lhyblog/assets/js/app.5d93db53.js" defer></script><script src="/lhyblog/assets/js/2.8d81c5f1.js" defer></script><script src="/lhyblog/assets/js/18.fe60a8a6.js" defer></script><script src="/lhyblog/assets/js/3.4aea83a5.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  nginx:
+    container_name: lhyblog
+    hostname: lhyblog
+    restart: always
+    image: nginx:alpine
+    environment:
+      - TZ=Asia/Shanghai  # 设置时区
+    volumes:
+      - ./docker/nginx:/etc/nginx
+      - ./lhyblog:/usr/share/nginx/html
+    ports:
+      - "80:80"
+    working_dir: /usr/share/nginx/html

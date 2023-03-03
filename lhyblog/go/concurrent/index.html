@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>go并发 | 失效的氟西丁</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/lhyblog/image/favicon.ico">
+    <link rel="stylesheet" href="/lhyblog/css/style.css">
+    <meta name="description" content="日拱一卒无有尽，功不唐捐终入海">
+    
+    <link rel="preload" href="/lhyblog/assets/css/0.styles.68704805.css" as="style"><link rel="preload" href="/lhyblog/assets/js/app.5d93db53.js" as="script"><link rel="preload" href="/lhyblog/assets/js/2.8d81c5f1.js" as="script"><link rel="preload" href="/lhyblog/assets/js/12.9892c7c3.js" as="script"><link rel="preload" href="/lhyblog/assets/js/3.4aea83a5.js" as="script"><link rel="prefetch" href="/lhyblog/assets/js/10.5a62e4bb.js"><link rel="prefetch" href="/lhyblog/assets/js/11.d21d05c8.js"><link rel="prefetch" href="/lhyblog/assets/js/13.3f7be324.js"><link rel="prefetch" href="/lhyblog/assets/js/14.bf80a139.js"><link rel="prefetch" href="/lhyblog/assets/js/15.9af29553.js"><link rel="prefetch" href="/lhyblog/assets/js/16.957e5c08.js"><link rel="prefetch" href="/lhyblog/assets/js/17.d9ea814b.js"><link rel="prefetch" href="/lhyblog/assets/js/18.fe60a8a6.js"><link rel="prefetch" href="/lhyblog/assets/js/19.e8b06bfe.js"><link rel="prefetch" href="/lhyblog/assets/js/20.87eff516.js"><link rel="prefetch" href="/lhyblog/assets/js/21.8658752e.js"><link rel="prefetch" href="/lhyblog/assets/js/22.30a3bde4.js"><link rel="prefetch" href="/lhyblog/assets/js/23.347d7883.js"><link rel="prefetch" href="/lhyblog/assets/js/24.f6b7f30e.js"><link rel="prefetch" href="/lhyblog/assets/js/25.697e1d58.js"><link rel="prefetch" href="/lhyblog/assets/js/26.e99e4e5b.js"><link rel="prefetch" href="/lhyblog/assets/js/27.ecc78804.js"><link rel="prefetch" href="/lhyblog/assets/js/28.c084aee1.js"><link rel="prefetch" href="/lhyblog/assets/js/29.18f2e46b.js"><link rel="prefetch" href="/lhyblog/assets/js/30.a8b1171b.js"><link rel="prefetch" href="/lhyblog/assets/js/31.36b6b75b.js"><link rel="prefetch" href="/lhyblog/assets/js/32.ba9a9510.js"><link rel="prefetch" href="/lhyblog/assets/js/33.e25e1bf9.js"><link rel="prefetch" href="/lhyblog/assets/js/34.f90e5e6f.js"><link rel="prefetch" href="/lhyblog/assets/js/35.5229d417.js"><link rel="prefetch" href="/lhyblog/assets/js/36.e98c59e6.js"><link rel="prefetch" href="/lhyblog/assets/js/37.d6baccb3.js"><link rel="prefetch" href="/lhyblog/assets/js/38.d8129f3a.js"><link rel="prefetch" href="/lhyblog/assets/js/39.7c1e8322.js"><link rel="prefetch" href="/lhyblog/assets/js/4.6d213030.js"><link rel="prefetch" href="/lhyblog/assets/js/5.806ca713.js"><link rel="prefetch" href="/lhyblog/assets/js/6.753e5d29.js"><link rel="prefetch" href="/lhyblog/assets/js/7.4ec49768.js"><link rel="prefetch" href="/lhyblog/assets/js/8.f32da868.js"><link rel="prefetch" href="/lhyblog/assets/js/9.3f41e8d6.js">
+    <link rel="stylesheet" href="/lhyblog/assets/css/0.styles.68704805.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/lhyblog/" class="home-link router-link-active"><!----> <span class="site-name">失效的氟西丁</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="php" class="dropdown-title"><span class="title">php</span> <span class="arrow down"></span></button> <button type="button" aria-label="php" class="mobile-dropdown-title"><span class="title">php</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/php/base/" class="nav-link">
+  通用篇
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/php/laravel/" class="nav-link">
+  Laravel
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/php/skill/" class="nav-link">
+  技巧篇
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/nginx/" class="nav-link">
+  nginx
+</a></div><div class="nav-item"><a href="/lhyblog/print/" class="nav-link">
+  print
+</a></div><div class="nav-item"><a href="/lhyblog/mysql/" class="nav-link">
+  mysql
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web" class="dropdown-title"><span class="title">web</span> <span class="arrow down"></span></button> <button type="button" aria-label="web" class="mobile-dropdown-title"><span class="title">web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/web/layout/" class="nav-link">
+  css布局
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/web/case/" class="nav-link">
+  css实例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/js/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/js/decode/" class="nav-link">
+  js令牌解码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow down"></span></button> <button type="button" aria-label="python" class="mobile-dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/python/base/" class="nav-link">
+  python基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/python/machine/" class="nav-link">
+  机器学习
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Golang" class="dropdown-title"><span class="title">Golang</span> <span class="arrow down"></span></button> <button type="button" aria-label="Golang" class="mobile-dropdown-title"><span class="title">Golang</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/go/env/" class="nav-link">
+  前言和环境
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/grammar/" class="nav-link">
+  语法基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/base/" class="nav-link">
+  函数和数组(切片)
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/map/" class="nav-link">
+  Map,指针,值传递,引用传递
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/struct/" class="nav-link">
+  结构体
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/gin/" class="nav-link">
+  Gin
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/concurrent/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  go并发
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/standard/" class="nav-link">
+  常用标准库
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/skills/" class="nav-link">
+  技巧篇
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/docker/" class="nav-link">
+  docker
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/vue/base/" class="nav-link">
+  vue基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/instruction/" class="nav-link">
+  vue指令
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/assembly/" class="nav-link">
+  组件化编程
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/problem/" class="nav-link">
+  problem
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/uniApp/" class="nav-link">
+  uniApp
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/utils/" class="nav-link">
+  问题笔记
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/regular/" class="nav-link">
+  正则
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/tool/" class="nav-link">
+  tool
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="php" class="dropdown-title"><span class="title">php</span> <span class="arrow down"></span></button> <button type="button" aria-label="php" class="mobile-dropdown-title"><span class="title">php</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/php/base/" class="nav-link">
+  通用篇
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/php/laravel/" class="nav-link">
+  Laravel
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/php/skill/" class="nav-link">
+  技巧篇
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/nginx/" class="nav-link">
+  nginx
+</a></div><div class="nav-item"><a href="/lhyblog/print/" class="nav-link">
+  print
+</a></div><div class="nav-item"><a href="/lhyblog/mysql/" class="nav-link">
+  mysql
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web" class="dropdown-title"><span class="title">web</span> <span class="arrow down"></span></button> <button type="button" aria-label="web" class="mobile-dropdown-title"><span class="title">web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/web/layout/" class="nav-link">
+  css布局
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/web/case/" class="nav-link">
+  css实例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/js/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/js/decode/" class="nav-link">
+  js令牌解码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow down"></span></button> <button type="button" aria-label="python" class="mobile-dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/python/base/" class="nav-link">
+  python基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/python/machine/" class="nav-link">
+  机器学习
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Golang" class="dropdown-title"><span class="title">Golang</span> <span class="arrow down"></span></button> <button type="button" aria-label="Golang" class="mobile-dropdown-title"><span class="title">Golang</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/go/env/" class="nav-link">
+  前言和环境
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/grammar/" class="nav-link">
+  语法基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/base/" class="nav-link">
+  函数和数组(切片)
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/map/" class="nav-link">
+  Map,指针,值传递,引用传递
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/struct/" class="nav-link">
+  结构体
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/gin/" class="nav-link">
+  Gin
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/concurrent/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  go并发
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/standard/" class="nav-link">
+  常用标准库
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/go/skills/" class="nav-link">
+  技巧篇
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/docker/" class="nav-link">
+  docker
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/lhyblog/vue/base/" class="nav-link">
+  vue基础
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/instruction/" class="nav-link">
+  vue指令
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/assembly/" class="nav-link">
+  组件化编程
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/problem/" class="nav-link">
+  problem
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/uniApp/" class="nav-link">
+  uniApp
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/utils/" class="nav-link">
+  问题笔记
+</a></li><li class="dropdown-item"><!----> <a href="/lhyblog/vue/regular/" class="nav-link">
+  正则
+</a></li></ul></div></div><div class="nav-item"><a href="/lhyblog/tool/" class="nav-link">
+  tool
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span></span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/lhyblog/go/concurrent/" aria-current="page" class="active sidebar-link">go并发</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_1-基本概念" class="sidebar-link">1. 基本概念</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_1-1-串行、并发与并行" class="sidebar-link">1.1 串行、并发与并行</a></li><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_1-2-进程、线程和协程" class="sidebar-link">1.2 进程、线程和协程</a></li><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_1-3-并发模型" class="sidebar-link">1.3 并发模型</a></li></ul></li><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_2-goroutine" class="sidebar-link">2. goroutine</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_2-1-使用goroutine" class="sidebar-link">2.1 使用Goroutine</a></li><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_2-2-启动单个goroutine" class="sidebar-link">2.2 启动单个goroutine</a></li><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_2-3-启动多个goroutine" class="sidebar-link">2.3 启动多个goroutine</a></li><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_2-4-动态栈" class="sidebar-link">2.4 动态栈</a></li><li class="sidebar-sub-header"><a href="/lhyblog/go/concurrent/#_2-5-gomaxprocs" class="sidebar-link">2.5 GOMAXPROCS</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="go并发"><a href="#go并发" class="header-anchor">#</a> go并发</h1> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p><font color="blue"><b>并发编程</b></font>在当前软件领域是一个非常重要的概念，随着CPU等硬件的发展，我们无一例外的想让我们的程序运行的快一点、再快一点。Go语言在语言层面天生支持并发，充分利用现代CPU的多核优势，这也是Go语言能够大范围流行的一个很重要的原因。</p></div> <h2 id="_1-基本概念"><a href="#_1-基本概念" class="header-anchor">#</a> 1. 基本概念</h2> <h3 id="_1-1-串行、并发与并行"><a href="#_1-1-串行、并发与并行" class="header-anchor">#</a> 1.1 串行、并发与并行</h3> <ol><li>串行：我们都是先读小学，小学毕业后再读初中，读完初中再读高中。</li> <li>并发：<font color="blue"><b>同一时间段</b></font>执行多个任务（你在用微信和两个女朋友聊天）。</li> <li>并行：<font color="blue"><b>同一时刻</b></font>执行多个任务（你和你朋友都在用微信和女朋友聊天）。</li></ol> <h3 id="_1-2-进程、线程和协程"><a href="#_1-2-进程、线程和协程" class="header-anchor">#</a> 1.2 <a href="http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html" target="_blank" rel="noopener noreferrer">进程、线程和协程<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h3> <ol><li>进程（process）：程序在操作系统中的一次执行过程，系统进行资源分配和调度的一个独立单位; 一个进程必须包含至少一个线程;</li> <li>线程（thread）：操作系统基于进程开启的轻量级进程，是操作系统调度执行的最小单位。</li> <li>协程（goroutine）：非操作系统提供而是由用户自行创建和控制的<font color="color"><b>用户态‘线程’</b></font>，比线程更轻量级。</li></ol> <h3 id="_1-3-并发模型"><a href="#_1-3-并发模型" class="header-anchor">#</a> 1.3 并发模型</h3> <p>业界将如何实现并发编程总结归纳为各式各样的并发模型，常见的并发模型有以下几种：</p> <ol><li>线程&amp;锁模型</li> <li>Actor模型</li> <li>CSP模型</li> <li>Fork&amp;Join模型</li></ol> <p>Go语言中的并发程序主要是通过基于CSP（communicating sequential processes）的goroutine和channel来实现，当然也支持使用传统的多线程共享内存的并发方式。</p> <h2 id="_2-goroutine"><a href="#_2-goroutine" class="header-anchor">#</a> 2. goroutine</h2> <ol><li><p><font color="color"><b>Goroutine</b></font> 是 Go 语言支持并发的核心，在一个Go程序中同时创建成百上千个goroutine是非常普遍的，一个goroutine会以一个很小的栈开始其生命周期，一般只需要2KB。</p></li> <li><p>区别于操作系统线程由系统内核进行调度， goroutine 是由Go运行时（runtime）负责调度。例如Go运行时会智能地将 m个goroutine 合理地分配给n个操作系统线程，实现类似m:n的调度机制，不再需要Go开发者自行在代码层面维护一个线程池。</p></li> <li><p>Goroutine 是 Go 程序中最基本的并发执行单元。每一个 Go 程序都至少包含一个 <code>goroutine</code>——<code>main goroutine</code>，当 Go 程序启动时它会自动创建。</p></li> <li><p>在Go语言编程中你不需要去自己写进程、线程、协程，你的技能包里只有一个技能——<code>goroutine</code>，当你需要让某个任务并发执行的时候，你只需要把这个任务包装成一个函数，开启一个 <code>goroutine</code> 去执行这个函数就可以了，就是这么简单粗暴。</p></li></ol> <h3 id="_2-1-使用goroutine"><a href="#_2-1-使用goroutine" class="header-anchor">#</a> 2.1 使用Goroutine</h3> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>Go语言中使用 goroutine 非常简单，只需要在函数或方法调用前加上go关键字就可以创建一个 goroutine ，从而让该函数或方法在新创建的 goroutine 中执行。</p></div> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">go</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// 创建一个新的 goroutine 运行函数f</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>匿名函数也支持使用go关键字创建 goroutine 去执行。</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>一个 goroutine 必定对应一个函数/方法，可以创建多个 goroutine 去执行相同的函数/方法。</p> <h3 id="_2-2-启动单个goroutine"><a href="#_2-2-启动单个goroutine" class="header-anchor">#</a> 2.2 启动单个goroutine</h3> <p>启动 goroutine 的方式非常简单，只需要在调用函数（普通函数和匿名函数）前加上一个go关键字。</p> <p>我们先来看一个在 main 函数中执行普通函数调用的示例。</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, 李白&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// 开启一个主goroutine去执行main函数</span>
+	<span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, main函数&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>将上面的代码编译后执行，得到的结果如下：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>PS F:\go\study&gt; go run .\main.go
+您好, 李白
+您好, main函数
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>代码中 hello 函数和其后面的打印语句是串行的。</p> <p>接下来我们在调用 hello 函数前面加上关键字go，也就是启动一个 goroutine 去执行 hello 这个函数。</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, 李白&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 开启一个主goroutine去执行main函数</span>
+	<span class="token keyword">go</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 开启一个goroutine去执行hello函数</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, main函数&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>将上述代码重新编译后执行，得到输出结果如下</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>您好, main函数
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这一次的执行结果只在终端打印了<code>您好, main函数</code>，并没有打印 <code>您好, 李白</code>。这是为什么呢？</p> <ol><li><p>其实在 Go 程序启动时，Go 程序就会为 main 函数创建一个默认的 <code>主goroutine</code>;</p></li> <li><p>在上面的代码中我们在 <code>main</code> 函数中使用 <code>go</code> 关键字创建了另外一个 <code>goroutine</code> 去执行 <code>hello</code> 函数，而此时 <code>main goroutine</code> 还在继续往下执行，我们的程序中此时存在两个并发执行的 <code>goroutine</code>。</p></li> <li><p>当 <code>main</code> 函数结束时整个程序也就结束了，同时 <code>main goroutine</code> 也结束了，所有由 <code>main goroutine</code> 创建的 <code>goroutine</code> 也会一同退出。也就是说我们的 <code>main</code> 函数退出太快，另外一个 <code>goroutine</code> 中的函数还未执行完程序就退出了，导致未打印出<code>您好, 李白</code>。</p></li></ol> <p>所以我们要想办法让 main 函数‘“等一等”将在另一个 goroutine 中运行的 hello 函数。其中最简单粗暴的方式就是在 main 函数中“time.Sleep”一秒钟了（这里的1秒钟只是我们为了保证新的 goroutine 能够被正常创建和执行而设置的一个值）。</p> <p>按如下方式修改我们的示例代码。</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;time&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, 李白&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 开启一个主goroutine去执行main函数</span>
+	<span class="token keyword">go</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 开启一个goroutine去执行hello函数</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, main函数&quot;</span><span class="token punctuation">)</span>
+	time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>将我们的程序重新编译后再次执行，程序会在终端输出如下结果，并且会短暂停顿一会儿。</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>PS F:\go\study&gt; go run .\main.go
+您好, main函数
+您好, 李白
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>为什么会先打印<code>您好, main函数</code>呢？</p> <p>这是因为在程序中创建 goroutine 执行函数需要一定的开销，而与此同时 main 函数所在的 goroutine 是继续执行的。</p> <p>在上面的程序中使用time.Sleep让 main goroutine 等待 hello goroutine执行结束是不优雅的，当然也是不准确的。</p> <p><font color="blue"><b>sync包等待</b></font></p> <p>Go 语言中通过<code>sync包</code>为我们提供了一些常用的并发原语，我们会在后面的小节单独介绍sync包中的内容。在这一小节，我们会先介绍一下 sync 包中的WaitGroup。当你并不关心并发操作的结果或者有其它方式收集并发操作的结果时，WaitGroup是实现等待一组并发操作完成的好方法。</p> <p>下面的示例代码中我们在 main goroutine 中使用sync.WaitGroup来等待 hello goroutine 完成后再退出。</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;sync&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// 声明全局等待组变量</span>
+<span class="token keyword">var</span> wg sync<span class="token punctuation">.</span>WaitGroup
+
+<span class="token keyword">func</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, 李白&quot;</span><span class="token punctuation">)</span>
+	wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 告知当前goroutine完成  通知wg计数牌-1</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 开启一个主goroutine去执行main函数</span>
+	wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment">// 登记1个goroutine, 通知wg计数牌+1</span>
+	<span class="token keyword">go</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 开启一个goroutine去执行hello函数</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, main函数&quot;</span><span class="token punctuation">)</span>
+	wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 阻塞等待登记的goroutine完成  计数牌等于0的时候, 执行完成</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>将代码编译后再执行，得到的输出结果和之前一致，但是这一次程序不再会有多余的停顿，<code>hello goroutine</code> 执行完毕后程序直接退出。</p> <p>示例</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;sync&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// 声明全局等待组变量</span>
+<span class="token keyword">var</span> wg sync<span class="token punctuation">.</span>WaitGroup
+
+<span class="token keyword">func</span> <span class="token function">hello</span><span class="token punctuation">(</span>i <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, 李白&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+	wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 告知当前goroutine完成,通知wg计数牌-1</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 开启一个主goroutine去执行main函数</span>
+	wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token comment">// 登记100个goroutine</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		<span class="token keyword">go</span> <span class="token function">hello</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token comment">// 开启一个goroutine去执行hello函数</span>
+	<span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, main函数&quot;</span><span class="token punctuation">)</span>
+	wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 阻塞等待登记的goroutine完成,计数牌等于0的时候, 执行完成</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>示例2: 匿名函数</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;sync&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// 声明全局等待组变量</span>
+<span class="token keyword">var</span> wg sync<span class="token punctuation">.</span>WaitGroup
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 开启一个主goroutine去执行main函数</span>
+	wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token comment">// 登记100个goroutine</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		<span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;你好&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+			wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, main函数&quot;</span><span class="token punctuation">)</span>
+	wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 阻塞等待登记的goroutine完成,计数牌等于0的时候, 执行完成</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>此时打印出来的<code>i</code>大量重复, 原因是这个匿名函数是一个闭包, 引入的外面的变量i, 此时又是goroutine开启,识别不出来是哪一个参数的作用域,需要在闭包里面传参数,把i传进去,解决这个问题</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;sync&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// 声明全局等待组变量</span>
+<span class="token keyword">var</span> wg sync<span class="token punctuation">.</span>WaitGroup
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 开启一个主goroutine去执行main函数</span>
+	wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token comment">// 登记100个goroutine</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		<span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span>i <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;你好&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+			wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;您好, main函数&quot;</span><span class="token punctuation">)</span>
+	wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 阻塞等待登记的goroutine完成,计数牌等于0的时候, 执行完成</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h3 id="_2-3-启动多个goroutine"><a href="#_2-3-启动多个goroutine" class="header-anchor">#</a> 2.3 启动多个goroutine</h3> <p>在 Go 语言中实现并发就是这样简单，我们还可以启动多个 goroutine 。让我们再来看一个新的代码示例。这里同样使用了sync.WaitGroup来实现 goroutine 的同步。</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;sync&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> wg sync<span class="token punctuation">.</span>WaitGroup
+
+<span class="token keyword">func</span> <span class="token function">hello</span><span class="token punctuation">(</span>i <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">defer</span> wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// goroutine结束就登记-1</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;hello&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// 启动一个goroutine就登记+1</span>
+		<span class="token keyword">go</span> <span class="token function">hello</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 等待所有登记的goroutine都结束</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>多次执行上面的代码会发现每次终端上打印数字的顺序都不一致。这是因为10个 goroutine 是并发执行的，而 goroutine 的调度是随机的。</p> <h3 id="_2-4-动态栈"><a href="#_2-4-动态栈" class="header-anchor">#</a> 2.4 动态栈</h3> <p>操作系统的线程一般都有固定的栈内存（通常为2MB）,而 Go 语言中的 goroutine 非常轻量级，一个 goroutine 的初始栈空间很小（一般为2KB），所以在 Go 语言中一次创建数万个 goroutine 也是可能的。并且 goroutine 的栈不是固定的，可以根据需要动态地增大或缩小， Go 的 runtime 会自动为 goroutine 分配合适的栈空间。</p> <h3 id="_2-5-gomaxprocs"><a href="#_2-5-gomaxprocs" class="header-anchor">#</a> 2.5 GOMAXPROCS</h3> <p>Go运行时的调度器使用<code>GOMAXPROCS</code>参数来确定需要使用多少个 <code>OS</code> 线程来同时执行<code>Go</code> 代码。默认值是机器上的 <code>CPU</code> 核心数。例如在一个 8 核心的机器上，GOMAXPROCS 默认为 8。Go语言中可以通过runtime.GOMAXPROCS函数设置当前程序并发时占用的 CPU逻辑核心数。（Go1.5版本之前，默认使用的是单核心执行。Go1.5 版本之后，默认使用全部的CPU 逻辑核心数。）</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;runtime&quot;</span>
+	<span class="token string">&quot;sync&quot;</span>
+	<span class="token string">&quot;time&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> wg sync<span class="token punctuation">.</span>WaitGroup
+
+<span class="token keyword">func</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;a&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	runtime<span class="token punctuation">.</span><span class="token function">GOMAXPROCS</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">// 开启2核执行Go代码</span>
+	<span class="token keyword">go</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">go</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">6/9/2022, 10:06:28 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----><!----></div></div>
+    <script src="/lhyblog/assets/js/app.5d93db53.js" defer></script><script src="/lhyblog/assets/js/2.8d81c5f1.js" defer></script><script src="/lhyblog/assets/js/12.9892c7c3.js" defer></script><script src="/lhyblog/assets/js/3.4aea83a5.js" defer></script>
+  </body>
+</html>
